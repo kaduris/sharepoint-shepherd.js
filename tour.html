@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="../SiteAssets/tour/css/shepherd-theme-arrows.css" />
+<link rel="stylesheet" type="text/css" href="../SiteAssets/tour/css/tour.css" />
+<script src="../SiteAssets/tour/js/popper.min.js"></script>
+<script src="../SiteAssets/tour/js/shepherd.min.js"></script>
+<button class="introbutton">Start tour</button>
+<script>
+   const tour = new Shepherd.Tour({
+       defaults:{
+           classes: 'shepherd-theme-arrows',
+           showCancelLink: true
+       }
+   });
+   tour.addStep('example-step', {
+            title: 'Welcome to SharePoint site tour!',
+            text: 'This is your page title - you can change it under <br><br> <b>"Site Settings" - "Title, Description & Logo"</b>',
+            attachTo: '#DeltaPlaceHolderPageTitleInTitleArea bottom',
+             buttons: [
+                {
+                action: tour.cancel,
+                classes: 'shepherd-button-secondary',
+                text: 'Exit'
+                }, {
+                action: tour.next,
+                classes: 'shepherd-button-example-primary',
+                text: 'Next'
+                }
+            ]
+        });
+    tour.addStep('step2', {
+            title: 'Site Logo',
+            text: 'This is your site logo - You can change that as well<br> using the previous setting page',
+            attachTo: '#DeltaSiteLogo right',
+             buttons: [
+                {
+                action: tour.back,
+                classes: 'shepherd-button-secondary',
+                text: 'Back'
+                }, {
+                action: tour.next,
+                classes: 'shepherd-button-example-primary',
+                text: 'Next'
+                }
+            ]
+        });
+    tour.addStep('step3', {
+            title: 'Side Navigation',
+            text: 'This is your side navigation',
+            attachTo: '#zz13_V4QuickLaunchMenu bottom',
+             buttons: [
+                {
+                action: tour.back,
+                classes: 'shepherd-button-secondary',
+                text: 'Back'
+                }, {
+                action: tour.next,
+                classes: 'shepherd-button-example-primary',
+                text: 'Finish'
+                }
+            ]
+        });
+ _spBodyOnLoadFunctionNames.push("sptour");
+ function sptour() {
+     let btn = document.querySelector('.introbutton');
+     btn.addEventListener("click", function (e) {
+         e.preventDefault();
+         tour.start();
+     });
+ }
+</script>
